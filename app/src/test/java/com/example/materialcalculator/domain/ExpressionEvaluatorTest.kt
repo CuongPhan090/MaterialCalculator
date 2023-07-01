@@ -12,6 +12,7 @@ class ExpressionEvaluatorTest {
         // Given
         evaluator = ExpressionEvaluator(
             listOf(
+                ExpressionPart.Op(Operation.SUBTRACT),
                 ExpressionPart.Number(4.0),
                 ExpressionPart.Op(Operation.ADD),
                 ExpressionPart.Parentheses(ParenthesesType.Opening),
@@ -28,7 +29,7 @@ class ExpressionEvaluatorTest {
 
         // When
         val result = evaluator.evaluate()
-        val expected = 4.0 + (5.0 - 3.0) * 5.0 / 4.0
+        val expected = -4.0 + (5.0 - 3.0) * 5.0 / 4.0
 
         // Then
         assertThat(result).isEqualTo(expected)
